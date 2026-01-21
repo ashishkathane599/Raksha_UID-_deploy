@@ -25,8 +25,46 @@ from Pipelines.forensic_analyzer import analyze_image_forensics
 from Pipelines.fraud_assement import assess_fraud
 from Pipelines.model_json import predict_fraud
 from Pipelines.final_decision import make_final_decision
+from model_loader import load_sklearn_model, load_keras_model
+
 
 app = FastAPI(title="RakshaUID Identity Defense")
+
+
+fraud_model = None
+face_model = None
+
+@app.on_event("startup")
+def load_models():
+    global fraud_model, face_model
+    fraud_model = load_sklearn_model()
+    face_model = load_keras_model()
+
+
+@app.get("/")
+def health():
+    return {"status": "API is running"}
+
+
+# -----------------------------
+# Fraud prediction (PKL)
+# -----------------------------
+@app.post("/predict-fraud")
+def predict_fraud(data: list):
+    prediction = fraud_model.predict([data])
+    return {"prediction": prediction.tolist()}
+
+
+# -----------------------------
+# Face prediction (H5)
+# -----------------------------
+@app.post("/predict-face")
+def predict_face(input_array: list):
+    arr = np.array(input_array)
+    result = face_model.predict(arr)
+    return {"result": result.tolist()}
+
+
 
 # --- SECURITY CONFIG ---
 app.add_middleware(

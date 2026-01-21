@@ -1,25 +1,39 @@
-# --- Web Framework ---
-fastapi
-uvicorn
-python-multipart
-Jinja2
-starlette
+# --- Core API ---
+fastapi==0.128.0
+uvicorn==0.40.0
+starlette==0.50.0
+python-multipart==0.0.21
+ujson==5.11.0
 
-# --- Deep Learning (CNNs) ---
-tensorflow
+# --- Hugging Face ---
+huggingface_hub==1.3.2
+filelock==3.20.3
+requests==2.32.5
 
-# --- OCR (Text Extraction) ---
-paddleocr
+# --- ML / Data ---
+numpy==2.1.3
+pandas==2.3.3
+scikit-learn==1.7.2
+joblib==1.5.3
+scipy==1.15.3
 
-# --- Computer Vision & Face Recognition ---
-opencv-python
+# --- TensorFlow (CPU ONLY) ---
+tensorflow-cpu==2.20.0
+keras==3.12.0
+h5py==3.15.1
 
-# --- Machine Learning (Fraud Detection) ---
-scikit-learn
-joblib
+# --- Image / OCR (CPU safe) ---
+opencv-python-headless==4.10.0.84
+pillow==12.1.0
+imutils==0.5.4
+pyzbar==0.1.9
 
-# --- Data Handling & Utils ---
-numpy
-pandas
-pyaadhaar
-pyzbar
+# --- OCR / Aadhaar ---
+paddleocr==3.3.2
+paddlepaddle==3.2.2
+pyaadhaar==2.0.2
+
+# --- Utils ---
+pydantic==2.12.5
+typing_extensions==4.15.0
+python-dateutil==2.9.0.post0

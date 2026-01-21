@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+venv/
+.env/
+
+# ML / Data
+Models/
+datasets/
+*.pt
+*.h5
+*.onnx
+
+# Logs
+*.log
+
+# IDE
+.vscode/
